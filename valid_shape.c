@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_shape.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:03:31 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/03 10:10:59 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/04 19:49:02 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,14 @@ int		val_mino(t_mino *head)
 	vald = head;
 	while (vald != NULL)
 	{
-		if (hash_per(head->coordinates) == 0)
+		if (hash_per(vald->coordinates) == 0)
 			return (-1);
-		if (hash_num(head->coordinates) == 0)
+		if (hash_num(vald->coordinates) == 0)
 			return (-1);
-		if (six_eight(head->coordinates) == 0)
+		if (six_eight(vald->coordinates) == 0)
 			return (-1);
+		vald = cuty(vald);
+		puts("exited cuty");
 		vald = vald->next;
 	}
 	return (0);

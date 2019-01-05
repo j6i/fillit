@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 12:02:40 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/04 12:45:16 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/04 19:47:27 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,21 @@ int		error(void)
 
 int		main(int argc, char **argv)
 {
-	int		i;
-	int		solved;
-	int		size;
-	t_mino	*print;
+	t_mino	*minos;
 
-	i = 0;
-	solved = 0;
-	size = 2;
 	if (argc == 2)
 	{
-		if ((print = mino_oc(argv[1])) == 0)
+		if ((minos = mino_oc(argv[1])) == 0)
 			return (error());
-		while (solved == 0)
+		if (val_mino(minos) == -1)
+			return (0);
+		//if (solved(minos) == 0)
+		//	return (error());
+		while (minos != NULL)
 		{
-			map(size);
-			//if (place is solved)
-				solved = 1;
-			size++;
-		}
-		while (print != NULL)
-		{
-			print2d(print->coordinates);
+			print2d(minos->coordinates);
 			puts("");
-			print = print->next;
+			minos = minos->next;
 		}
 	}
 	else

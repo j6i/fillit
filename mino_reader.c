@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mino_reader.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 20:51:56 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/02 18:39:30 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/04 19:47:36 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ t_mino	*mino_cpy(int fd)
 	while ((ret = read(fd, buf, 21)) == 21)
 	{
 		lst_append(&head, buf);
-		if (val_mino(head) == -1)
-			return (0);
 		ft_strclr(buf);
 	}
 	if (ret == 20)
@@ -34,11 +32,10 @@ t_mino	*mino_cpy(int fd)
 			head = fnew_mino(buf, 20);
 		else
 			lst_append(&head, buf);
-		if (val_mino(head) == -1)
-			return (0);
-		ft_strclr(buf);
 	}
 	ft_strdel(&buf);
+	if (ret != 20)
+		return (0);
 	return (head);
 }
 

@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   place.c                                            :+:      :+:    :+:   */
+/*   solved.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/03 21:04:26 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/04 16:27:51 by jgabelho         ###   ########.fr       */
+/*   Created: 2019/01/04 14:17:28 by jgabelho          #+#    #+#             */
+/*   Updated: 2019/01/04 14:20:34 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "fillit.h"
 
-int		place(char **mappie, t_mino *mino, int i, int j)
+int		solved(t_mino *minos)
 {
-	while (mino->coordinates)
+	int		solver;
+	int		size;
+	char	**mappie;
+
+	size = 2;
+	solver = 0;
+	while (solver == 0)
 	{
-		if (mino->coordinates[i][j] == '.')
-		{
-			i++;
-		}
-		else
-			mappie[i][j] = mino->coordinates[i][j];
+		mappie = map(size);
+		solver = place(mappie, minos);
+		//free(mappie);
+		size++;
 	}
 }
-//take in map
-//try to place pieces on map
-//use recurssion somewhere
-//if pieces don't fit, make new map
-
