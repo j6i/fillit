@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cuter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 15:27:54 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/05 12:04:49 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/05 13:27:06 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,19 @@ t_mino			*cuty(t_mino *valid)
 {
 	int 	len;
 	int		x;
-	int		y;
 
 	len = 4;
 	x = 0;
-	y = 0;
-	while (valid->coordinates[0][x] != '\0')
+	while (valid->crd[0][x] != '\0')
 	{
-		while (valid->coordinates[y][x] == '.' && valid->coordinates[y + 1][x] == '.' &&
-		valid->coordinates[y + 2][x] == '.' && valid->coordinates[y + 3][x] == '.' && x < len)
+		while (valid->crd[0][x] == '.' && valid->crd[1][x] == '.' &&
+		valid->crd[2][x] == '.' && valid->crd[3][x] == '.' && x < len)
 		{
-			ft_memmove(valid->coordinates[y] + x, valid->coordinates[y] + x + 1, len);
-			ft_memmove(valid->coordinates[y + 1] + x, valid->coordinates[y + 1] + x + 1, len);
-			ft_memmove(valid->coordinates[y + 2] + x, valid->coordinates[y + 2] + x + 1, len);
-			ft_memmove(valid->coordinates[y + 3] + x, valid->coordinates[y + 3] + x + 1, len);
-			print2d(valid->coordinates);
+			ft_memmove(valid->crd[0] + x, valid->crd[0] + x + 1, len);
+			ft_memmove(valid->crd[1] + x, valid->crd[1] + x + 1, len);
+			ft_memmove(valid->crd[2] + x, valid->crd[2] + x + 1, len);
+			ft_memmove(valid->crd[3] + x, valid->crd[3] + x + 1, len);
+			print2d(valid->crd);
 			puts("");
 			len--;
 		}
@@ -39,28 +37,38 @@ t_mino			*cuty(t_mino *valid)
 	}
 	return (valid);
 }
-/*
-int			cutx(t_mino *valid)
-{
-	int	x;
-	int	y;
 
-	x = 0;
+t_mino			*cutx(t_mino *valid)
+{
+	int 	len;
+	int		y;
+	int		x;
+
 	y = 0;
-	while (valid->coordinates[y][0] == '.' && valid->coordinates[y][1] == '.' &&
-	valid->coordinates[y][2] == '.' && valid->coordinates[y][3] == '.')
+	x = 0;
+	while (valid->crd[y] != 0)
 	{
-		while (x < 4)
+		len = ft_strlen(valid->crd[y]);
+		while (valid->crd[y][x] != '\0' && valid->crd[y][x] == '.')
+			x++;
+		if (x == len && valid->crd[y + 1] != 0)
 		{
-			ft_memmove(valid->coordinates[x][y], valid->coordinates[x][y] + 1, 5)
-			y++;
+			while (valid->crd[y] != 0)
+			{
+				ft_strcpy(valid->crd[y], valid->crd[y + 1]);
+				ft_strdel(&valid->crd[y + 1]);
+				y++;
+				print2d(valid->crd);
+				puts("");
+			}
+			y = 0;
 		}
-		x++;
+		if (x == len && valid->crd[y + 1] == 0 && valid->crd[y][x - 1] == '.')
+		{
+			ft_strdel(&valid->crd[y]);
+		}
+		x = 0;
+		y++;
 	}
+	return (valid);
 }
-
-t_mino		*cuter(t_mino *valid)
-{
-
-}
-*/
