@@ -6,7 +6,7 @@
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 20:42:25 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/04 16:28:33 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 13:27:01 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct		s_mino
 {
 	struct s_mino	*next;
 	size_t			size;
-	char			**coordinates;
+	char			**crd;
 }					t_mino;
 
 t_mino				*mino_oc(char *file);
@@ -34,6 +34,7 @@ void				lst_append(t_mino **head, char *buf);
 int					val_mino(t_mino *head);
 char				**map(int size);
 //int					place(char **mappie, t_mino *minos);
-t_mino			*cuty(t_mino *valid);
+t_mino				*cuty(t_mino *valid);
+t_mino				*cutx(t_mino *valid);
 
 #endif

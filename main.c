@@ -6,7 +6,7 @@
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 12:02:40 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/04 19:47:27 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 13:26:48 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		main(int argc, char **argv)
 		//	return (error());
 		while (minos != NULL)
 		{
-			print2d(minos->coordinates);
+			print2d(minos->crd);
 			puts("");
 			minos = minos->next;
 		}
