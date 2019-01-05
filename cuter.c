@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cuter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 15:27:54 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/04 20:53:11 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 12:04:49 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ t_mino			*cuty(t_mino *valid)
 	int		x;
 	int		y;
 
-	len = 5;
+	len = 4;
 	x = 0;
 	y = 0;
 	while (valid->coordinates[0][x] != '\0')
 	{
 		while (valid->coordinates[y][x] == '.' && valid->coordinates[y + 1][x] == '.' &&
-		valid->coordinates[y + 2][x] == '.' && valid->coordinates[y + 3][x] == '.')
+		valid->coordinates[y + 2][x] == '.' && valid->coordinates[y + 3][x] == '.' && x < len)
 		{
-			len--;
-			ft_memmove(valid->coordinates[y], valid->coordinates[y] + 1, len);
-			ft_memmove(valid->coordinates[y + 1], valid->coordinates[y + 1] + 1, len);
-			ft_memmove(valid->coordinates[y + 2], valid->coordinates[y + 2] + 1, len);
-			ft_memmove(valid->coordinates[y + 3], valid->coordinates[y + 3] + 1, len);
+			ft_memmove(valid->coordinates[y] + x, valid->coordinates[y] + x + 1, len);
+			ft_memmove(valid->coordinates[y + 1] + x, valid->coordinates[y + 1] + x + 1, len);
+			ft_memmove(valid->coordinates[y + 2] + x, valid->coordinates[y + 2] + x + 1, len);
+			ft_memmove(valid->coordinates[y + 3] + x, valid->coordinates[y + 3] + x + 1, len);
 			print2d(valid->coordinates);
 			puts("");
+			len--;
 		}
 		x++;
 	}
