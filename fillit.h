@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 20:42:25 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/05 18:13:13 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 20:34:29 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int					place(char **mappie, t_mino *minos, int x, int y);
 t_mino				*cuty(t_mino *valid);
 t_mino				*cutx(t_mino *valid);
 int					solved(t_mino *minos);
+int					mino_len(t_mino *lst);
 
 #endif

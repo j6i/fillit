@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   place.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 21:04:26 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/05 18:43:01 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 20:30:10 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,7 @@ int		place(char **mappie, t_mino *mino, int x, int y)
 			return (1);
 		}
 	}
-	else
-		return (0);
+	return (0);
 }
 //take in map
 //try to place pieces on map

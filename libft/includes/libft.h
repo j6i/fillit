@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:42:25 by awindham          #+#    #+#             */
-/*   Updated: 2019/01/05 20:21:11 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 20:31:28 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ char				*ft_fstrjoin(char *s1, char *s2, int f);
 int					ft_strchri(char *str, char c);
 void				print2d(char **s);
 int					ft_sqrt(int nb);
+int					ft_lstlen(t_list *lst);
 
 #endif

@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solved.c                                           :+:      :+:    :+:   */
+/*   mino_len.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/04 14:17:28 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/05 20:39:25 by mschroed         ###   ########.fr       */
+/*   Created: 2018/12/09 13:15:27 by jgabelho          #+#    #+#             */
+/*   Updated: 2019/01/05 20:33:50 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include "fillit.h"
 
-int		solved(t_mino *minos)
+int		mino_len(t_mino *lst)
 {
-	int		solver;
-	int		size;
-	char	**mappie;
-	int		x;
-	int		y;
+	int		i;
 
-	size = 2;
-	solver = 0;
-	x = 0;
-	y = 0;
-	while (solver == 0)
+	if (!lst)
+		return (0);
+	i = 0;
+	while (lst)
 	{
-		mappie = map(size);
-		solver = place(mappie, minos, x, y);
-		//free(mappie);
-		size++;
+		i++;
+		lst = lst->next;
 	}
-	return (1);
+	return (i);
 }
