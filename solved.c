@@ -6,7 +6,7 @@
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 14:17:28 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/05 18:11:21 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 18:48:47 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ int		solved(t_mino *minos)
 	solver = 0;
 	x = 0;
 	y = 0;
-	//while (solver == 0)
-	//{
-	mappie = map(size);
-	if ((solver = place(mappie, minos, x, y)) == 0)
-		return (0);
+	while (solver == 0)
+	{
+		mappie = map(size);
+		solver = place(mappie, minos, x, y);
+		//free(mappie);
+		size++;
+	}
 	return (1);
-	//free(mappie);
-	//size++;
-	//}
 }
