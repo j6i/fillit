@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cuter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 15:27:54 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/05 13:27:06 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 16:52:43 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ t_mino			*cuty(t_mino *valid)
 			ft_memmove(valid->crd[1] + x, valid->crd[1] + x + 1, len);
 			ft_memmove(valid->crd[2] + x, valid->crd[2] + x + 1, len);
 			ft_memmove(valid->crd[3] + x, valid->crd[3] + x + 1, len);
-			print2d(valid->crd);
-			puts("");
 			len--;
 		}
 		x++;
 	}
+	print2d(valid->crd);
+	puts("");
 	return (valid);
 }
 
@@ -42,33 +42,29 @@ t_mino			*cutx(t_mino *valid)
 {
 	int 	len;
 	int		y;
+	int		y2;
 	int		x;
 
 	y = 0;
 	x = 0;
 	while (valid->crd[y] != 0)
 	{
+		y2 = y;
 		len = ft_strlen(valid->crd[y]);
 		while (valid->crd[y][x] != '\0' && valid->crd[y][x] == '.')
 			x++;
-		if (x == len && valid->crd[y + 1] != 0)
+		y++;
+		while (x == len && valid->crd[y2 + 1] != 0)
 		{
-			while (valid->crd[y] != 0)
-			{
-				ft_strcpy(valid->crd[y], valid->crd[y + 1]);
-				ft_strdel(&valid->crd[y + 1]);
-				y++;
-				print2d(valid->crd);
-				puts("");
-			}
+			ft_strcpy(valid->crd[y2], valid->crd[y2 + 1]);
+			y2++;
 			y = 0;
 		}
-		if (x == len && valid->crd[y + 1] == 0 && valid->crd[y][x - 1] == '.')
-		{
-			ft_strdel(&valid->crd[y]);
-		}
+		if (x == len && valid->crd[y2 + 1] == 0)
+			ft_strdel(&valid->crd[y2]);
 		x = 0;
-		y++;
+		print2d(valid->crd);
+		puts("");
 	}
 	return (valid);
 }
