@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_shape.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:03:31 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/05 18:15:41 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/06 10:37:23 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,9 @@ int		six_eight(char **coord)
 int		val_mino(t_mino *head)
 {
 	t_mino	*vald;
+	int		id;
 
+	id = 0;
 	vald = head;
 	while (vald != NULL)
 	{
@@ -101,9 +103,12 @@ int		val_mino(t_mino *head)
 			return (-1);
 		if (six_eight(vald->crd) == 0)
 			return (-1);
-		vald = cuty(vald);
-		vald = cutx(vald);
+		vald = cuter(vald, id);
+		//vald = cuty(vald);
+		//vald = cutx(vald);
+		//vald = cut_hash(vald, id);
 		vald = vald->next;
+		id++;
 	}
 	return (0);
 }

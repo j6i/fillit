@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cuter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 15:27:54 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/05 18:11:00 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/06 10:45:04 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "fillit.h"
 
-t_mino			*cuty(t_mino *valid)
+t_mino		*cuty(t_mino *valid)
 {
 	int		len;
 	int		x;
@@ -36,7 +36,7 @@ t_mino			*cuty(t_mino *valid)
 	return (valid);
 }
 
-t_mino			*cutx(t_mino *valid)
+t_mino		*cutx(t_mino *valid)
 {
 	int		len;
 	int		y;
@@ -62,5 +62,34 @@ t_mino			*cutx(t_mino *valid)
 			ft_strdel(&valid->crd[y2]);
 		x = 0;
 	}
+	return (valid);
+}
+
+t_mino		*cut_hash(t_mino *valid, int id)
+{
+	int		y;
+	int		x;
+
+	y = 0;
+	valid->id = id;
+	while (valid->crd[y] != 0)
+	{
+		x = 0;
+		while (valid->crd[y][x] != 0)
+		{
+			if (valid->crd[y][x] == '#')
+				valid->crd[y][x] = valid->id + 'A';
+			x++;
+		}
+		y++;
+	}
+	return (valid);
+}
+
+t_mino		*cuter(t_mino *valid, int id)
+{
+	valid = cuty(valid);
+	valid = cutx(valid);
+	valid = cut_hash(valid, id);
 	return (valid);
 }

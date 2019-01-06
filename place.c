@@ -6,13 +6,31 @@
 /*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 21:04:26 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/05 20:30:10 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/06 10:17:25 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "fillit.h"
 
+int		map_check(char **mappie, t_mino *mino)
+{
+	int		x2;
+	int		y;
+	int		x;
+
+	y = 0;
+	x = ft_strlen(mino->crd[y]);
+	x2 = ft_strlen(mappie[y]);
+	if (x > x2)
+		return (0);
+	while (mappie[y] != '\0')
+		y++;
+	if (mappie[y] == '\0' && mino->crd[y] != '\0')
+		return (0);
+	return (1);
+}
+/*
 int		place_check(char **mappie, t_mino *mino, int x, int y)
 {
 	int		x2;
@@ -37,7 +55,7 @@ int		place_check(char **mappie, t_mino *mino, int x, int y)
 		x2++;
 	}
 	return (1);
-}
+}*/
 
 int		placer(char **mappie, t_mino *mino, int x, int y)
 {
@@ -76,7 +94,7 @@ int		place(char **mappie, t_mino *mino, int x, int y)
 	x2 = 0;
 	y2 = 0;
 	tmpx = x;
-	if ((place_check(mappie, mino, x, y)))
+	if (map_check(mappie, mino))
 	{
 		if((placer(mappie, mino, x, y)) == 1)
 		{
