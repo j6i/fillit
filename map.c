@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 10:41:39 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/04 12:45:27 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/05 18:14:23 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ char	**map_maker(char **mapper, int size)
 	return (mapper);
 }
 
-
 char	**map(int size)
 {
 	char	**mapper;
 
 	mapper = map_maker(mapper, size);
+	puts("MAP");
 	print2d(mapper);
 	puts("");
 	return (mapper);

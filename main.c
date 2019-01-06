@@ -6,7 +6,7 @@
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 12:02:40 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/05 13:26:48 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 18:15:07 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ int		main(int argc, char **argv)
 		if ((minos = mino_oc(argv[1])) == 0)
 			return (error());
 		if (val_mino(minos) == -1)
-			return (0);
-		//if (solved(minos) == 0)
-		//	return (error());
-		while (minos != NULL)
-		{
-			print2d(minos->crd);
-			puts("");
-			minos = minos->next;
-		}
+			return (error());
+		if (solved(minos) == 0)
+			return (error());
+		//while (minos != NULL)
+		//{
+		//	print2d(minos->crd);
+		//	puts("");
+		//	minos = minos->next;
+		//}
 	}
 	else
 		usage();

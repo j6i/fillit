@@ -6,7 +6,7 @@
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 20:42:25 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/05 13:27:01 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 18:13:13 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ t_mino				*fnew_mino(void const *data, size_t size);
 void				lst_append(t_mino **head, char *buf);
 int					val_mino(t_mino *head);
 char				**map(int size);
-//int					place(char **mappie, t_mino *minos);
+int					place(char **mappie, t_mino *minos, int x, int y);
 t_mino				*cuty(t_mino *valid);
 t_mino				*cutx(t_mino *valid);
+int					solved(t_mino *minos);
 
 #endif

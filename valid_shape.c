@@ -6,7 +6,7 @@
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:03:31 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/05 13:27:32 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/05 18:15:41 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,7 @@ int		val_mino(t_mino *head)
 		if (six_eight(vald->crd) == 0)
 			return (-1);
 		vald = cuty(vald);
-		puts("exited cuty");
 		vald = cutx(vald);
-		puts("exited cutx");
 		vald = vald->next;
 	}
 	return (0);

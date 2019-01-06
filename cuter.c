@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cuter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 15:27:54 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/05 16:52:43 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/05 18:11:00 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_mino			*cuty(t_mino *valid)
 {
-	int 	len;
+	int		len;
 	int		x;
 
 	len = 4;
@@ -33,14 +33,12 @@ t_mino			*cuty(t_mino *valid)
 		}
 		x++;
 	}
-	print2d(valid->crd);
-	puts("");
 	return (valid);
 }
 
 t_mino			*cutx(t_mino *valid)
 {
-	int 	len;
+	int		len;
 	int		y;
 	int		y2;
 	int		x;
@@ -63,8 +61,6 @@ t_mino			*cutx(t_mino *valid)
 		if (x == len && valid->crd[y2 + 1] == 0)
 			ft_strdel(&valid->crd[y2]);
 		x = 0;
-		print2d(valid->crd);
-		puts("");
 	}
 	return (valid);
 }
