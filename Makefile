@@ -6,7 +6,7 @@
 #    By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/28 11:44:33 by mschroed          #+#    #+#              #
-#    Updated: 2019/01/06 18:46:16 by mschroed         ###   ########.fr        #
+#    Updated: 2019/01/06 19:21:40 by mschroed         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,5 +27,6 @@ fclean: clean
 	@rm -f $(NAME)
 	@make -C libft fclean
 
-re: fclean all
+re: fclean all $(NAME)
+	@make -C libft fclean
 

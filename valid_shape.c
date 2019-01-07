@@ -6,7 +6,7 @@
 /*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:03:31 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 10:37:23 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/06 19:18:57 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,6 @@ int		val_mino(t_mino *head)
 		if (six_eight(vald->crd) == 0)
 			return (-1);
 		vald = cuter(vald, id);
-		//vald = cuty(vald);
-		//vald = cutx(vald);
-		//vald = cut_hash(vald, id);
 		vald = vald->next;
 		id++;
 	}

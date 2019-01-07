@@ -6,7 +6,7 @@
 /*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 12:02:40 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 18:46:09 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/06 19:17:15 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ int		main(int argc, char **argv)
 			return (error());
 		if (solved(minos) == 0)
 			return (error());
-		// while (minos != NULL)
-		// {
-		// 	print2d(minos->crd);
-		// 	puts("");
-		// 	minos = minos->next;
-		// }
 	}
 	else
 		usage();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   place.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 21:04:26 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 17:38:42 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/06 19:26:11 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int		placer(t_map *mappie, t_mino *mino, int x, int y)
 	while (mino->crd[my])
 	{
 		mx = 0;
-		while ((y + my) < mappie->size && (x + mx) < mappie->size && mino->crd[my][mx])
+		while ((y + my) < mappie->size && (x + mx) < mappie->size &&
+		mino->crd[my][mx])
 		{
 			if (mappie->map[y + my][x + mx] == '.' && mino->crd[my][mx] != '.')
 				mappie->map[y + my][x + mx] = mino->crd[my][mx];
@@ -89,7 +90,8 @@ int		piece_reset(t_map *mappie, t_mino *mino, int x, int y)
 	while (mino->crd[my])
 	{
 		mx = 0;
-		while ((y + my) < mappie->size && (x + mx) < mappie->size && mino->crd[my][mx])
+		while ((y + my) < mappie->size && (x + mx) < mappie->size &&
+		mino->crd[my][mx])
 		{
 			if (mappie->map[y + my][x + mx] != '.' && mino->crd[my][mx] != '.')
 				mappie->map[y + my][x + mx] = '.';
