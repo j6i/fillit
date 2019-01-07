@@ -6,7 +6,7 @@
 /*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 20:51:56 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 10:31:10 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/06 21:13:57 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,24 @@ t_mino	*mino_cpy(int fd)
 
 	buf = ft_strnew(21);
 	head = NULL;
-	while ((ret = read(fd, buf, 21)) == 21)
+	while ((ret = read(fd, buf, 21)) == 21 && (buf[0] == '.' || buf[0] == '#'))
 	{
 		lst_append(&head, buf);
 		ft_strclr(buf);
 	}
-	if (ret == 20)
+	if (ret == 20 && (buf[0] == '.' || buf[0] == '#'))
 	{
 		if (head == NULL)
 			head = fnew_mino(buf, 20);
 		else
 			lst_append(&head, buf);
 	}
-	ft_strdel(&buf);
-	if (ret != 20)
+	if (ret != 20 || (buf[0] != '.' && buf[0] != '#'))
+	{
+		ft_strdel(&buf);
 		return (0);
+	}
+	ft_strdel(&buf);
 	return (head);
 }
 

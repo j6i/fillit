@@ -6,22 +6,24 @@
 /*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 12:02:40 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 19:17:15 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/06 21:24:26 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "fillit.h"
+#include <stdlib.h>
 
 void	usage(void)
 {
 	ft_putstr("usage: fillit input_file\n");
+	exit (-1);
 }
 
 int		error(void)
 {
 	ft_putstr("error\n");
-	return (0);
+	exit (-1);
 }
 
 int		main(int argc, char **argv)
