@@ -6,7 +6,7 @@
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 14:17:28 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/06 16:59:43 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/06 17:39:04 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int		recurse(t_mino *mino, t_map *mappie, int size)
 		x = 0;
 		while (x < mappie->size)
 		{
-			if (placer(mappie, mino, x, y, mappie->size))
+			if (placer(mappie, mino, x, y))
 			{
 				if (recurse(mino->next, mappie, mappie->size))
 					return (1);
 				else
-					piece_reset(mappie, mino, x, y, mappie->size);
+					piece_reset(mappie, mino, x, y);
 			}
 			x++;
 		}
@@ -43,15 +43,11 @@ int		recurse(t_mino *mino, t_map *mappie, int size)
 
 int		solved(t_mino *minos)
 {
-	int		size;
 	t_map	*mappie;
 
-	size = 2;
-	mappie = map_new(size);
+	mappie = map_new(2);
 	while (!recurse(minos, mappie, mappie->size))
-	{
 		mappie->size++;
-	}
 	print2d(mappie->map);
 	return (1);
 }

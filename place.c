@@ -6,7 +6,7 @@
 /*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 21:04:26 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 16:42:32 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/06 17:38:42 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		map_check(t_map *mappie, t_mino *mino)
 	return (1);
 }
 
-int		piece_checker(t_map *mappie, t_mino *mino, int x, int y, int size)
+int		piece_checker(t_map *mappie, t_mino *mino, int x, int y)
 {
 	int		mx;
 	int		my;
@@ -41,11 +41,11 @@ int		piece_checker(t_map *mappie, t_mino *mino, int x, int y, int size)
 	while (mino->crd[my])
 	{
 		mx = 0;
-		while (mino->crd[my][mx])
+		while (mino->crd[my][mx] != 0)
 		{
 			if (mappie->map[y + my][x + mx] != '.' && mino->crd[my][mx] != '.')
 				return (0);
-			if (x + mx >= size || y + my >= size)
+			if (x + mx >= mappie->size || y + my >= mappie->size)
 				return (0);
 			mx++;
 		}
@@ -54,21 +54,21 @@ int		piece_checker(t_map *mappie, t_mino *mino, int x, int y, int size)
 	return (1);
 }
 
-int		placer(t_map *mappie, t_mino *mino, int x, int y, int size)
+int		placer(t_map *mappie, t_mino *mino, int x, int y)
 {
 	int		mx;
 	int		my;
 
 	my = 0;
 	mx = 0;
-	if (!piece_checker(mappie, mino, x, y, size))
+	if (!piece_checker(mappie, mino, x, y))
 	{
 		return (0);
 	}
 	while (mino->crd[my])
 	{
 		mx = 0;
-		while ((y + my) < size && (x + mx) < size && mino->crd[my][mx])
+		while ((y + my) < mappie->size && (x + mx) < mappie->size && mino->crd[my][mx])
 		{
 			if (mappie->map[y + my][x + mx] == '.' && mino->crd[my][mx] != '.')
 				mappie->map[y + my][x + mx] = mino->crd[my][mx];
@@ -79,7 +79,7 @@ int		placer(t_map *mappie, t_mino *mino, int x, int y, int size)
 	return (1);
 }
 
-int		piece_reset(t_map *mappie, t_mino *mino, int x, int y, int size)
+int		piece_reset(t_map *mappie, t_mino *mino, int x, int y)
 {
 	int		mx;
 	int		my;
@@ -89,7 +89,7 @@ int		piece_reset(t_map *mappie, t_mino *mino, int x, int y, int size)
 	while (mino->crd[my])
 	{
 		mx = 0;
-		while ((y + my) < size && (x + mx) < size && mino->crd[my][mx])
+		while ((y + my) < mappie->size && (x + mx) < mappie->size && mino->crd[my][mx])
 		{
 			if (mappie->map[y + my][x + mx] != '.' && mino->crd[my][mx] != '.')
 				mappie->map[y + my][x + mx] = '.';
