@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   place.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 21:04:26 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 10:17:25 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/06 16:42:32 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "fillit.h"
 
-int		map_check(char **mappie, t_mino *mino)
+int		map_check(t_map *mappie, t_mino *mino)
 {
 	int		x2;
 	int		y;
@@ -21,93 +21,81 @@ int		map_check(char **mappie, t_mino *mino)
 
 	y = 0;
 	x = ft_strlen(mino->crd[y]);
-	x2 = ft_strlen(mappie[y]);
+	x2 = ft_strlen(mappie->map[y]);
 	if (x > x2)
 		return (0);
-	while (mappie[y] != '\0')
+	while (mappie->map[y] != '\0')
 		y++;
-	if (mappie[y] == '\0' && mino->crd[y] != '\0')
+	if (mappie->map[y] == '\0' && mino->crd[y] != '\0')
 		return (0);
 	return (1);
 }
-/*
-int		place_check(char **mappie, t_mino *mino, int x, int y)
-{
-	int		x2;
-	int		y2;
-	int		tmpx;
 
-	x2 = 0;
-	y2 = 0;
-	tmpx = x;
-	while (mino->crd[y2][x2] != 0 && mappie[y][x] != '\0')
+int		piece_checker(t_map *mappie, t_mino *mino, int x, int y, int size)
+{
+	int		mx;
+	int		my;
+
+	my = 0;
+	mx = 0;
+	while (mino->crd[my])
 	{
-		if (mappie[y][x] == '\0' && mino->crd[y2][x2] != '\0')
-			return (0);
-		if (mino->crd[y2][x2] == '\0')
+		mx = 0;
+		while (mino->crd[my][mx])
 		{
-			y++;
-			y2++;
-			x2 = -1;
-			x = tmpx - 1;
+			if (mappie->map[y + my][x + mx] != '.' && mino->crd[my][mx] != '.')
+				return (0);
+			if (x + mx >= size || y + my >= size)
+				return (0);
+			mx++;
 		}
-		x++;
-		x2++;
+		my++;
 	}
 	return (1);
-}*/
-
-int		placer(char **mappie, t_mino *mino, int x, int y)
-{
-	int		y2;
-	int		x2;
-	int		tmpx;
-
-	y2 = 0;
-	x2 = 0;
-	tmpx = x;
-	while (mino->crd[y2])
-	{
-		mappie[y][x] = mino->crd[y2][x2];
-		if (mino->crd[y2 + 1] == 0)
-			return (1);
-		if (mino->crd[y2][x2 + 1] == '\0')
-		{
-			y++;
-			y2++;
-			x = tmpx;
-			x2 = 0;
-			mappie[y][x] = mino->crd[y2][x2];
-		}
-		x++;
-		x2++;
-	}
-	return (0);
 }
 
-int		place(char **mappie, t_mino *mino, int x, int y)
+int		placer(t_map *mappie, t_mino *mino, int x, int y, int size)
 {
-	int		x2;
-	int		y2;
-	int		tmpx;
+	int		mx;
+	int		my;
 
-	x2 = 0;
-	y2 = 0;
-	tmpx = x;
-	if (map_check(mappie, mino))
+	my = 0;
+	mx = 0;
+	if (!piece_checker(mappie, mino, x, y, size))
 	{
-		if((placer(mappie, mino, x, y)) == 1)
-		{
-			puts("PLACED");
-			print2d(mappie);
-			puts("");
-			return (1);
-		}
+		return (0);
 	}
-	return (0);
+	while (mino->crd[my])
+	{
+		mx = 0;
+		while ((y + my) < size && (x + mx) < size && mino->crd[my][mx])
+		{
+			if (mappie->map[y + my][x + mx] == '.' && mino->crd[my][mx] != '.')
+				mappie->map[y + my][x + mx] = mino->crd[my][mx];
+			mx++;
+		}
+		my++;
+	}
+	return (1);
 }
-//take in map
-//try to place pieces on map
-//use recurssion somewhere
-//if pieces don't fit, make new map
 
+int		piece_reset(t_map *mappie, t_mino *mino, int x, int y, int size)
+{
+	int		mx;
+	int		my;
+
+	my = 0;
+	mx = 0;
+	while (mino->crd[my])
+	{
+		mx = 0;
+		while ((y + my) < size && (x + mx) < size && mino->crd[my][mx])
+		{
+			if (mappie->map[y + my][x + mx] != '.' && mino->crd[my][mx] != '.')
+				mappie->map[y + my][x + mx] = '.';
+			mx++;
+		}
+		my++;
+	}
+	return (1);
+}
