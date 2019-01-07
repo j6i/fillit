@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solved.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/04 14:17:28 by jgabelho          #+#    #+#             */
-/*   Updated: 2019/01/06 17:39:04 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/06 19:12:25 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ int		solved(t_mino *minos)
 	mappie = map_new(2);
 	while (!recurse(minos, mappie, mappie->size))
 		mappie->size++;
-	print2d(mappie->map);
+	printn2d(mappie->map, mappie->size);
 	return (1);
 }

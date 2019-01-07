@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 20:42:25 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 17:39:26 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/06 18:46:07 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int					piece_reset(t_map *mappie, t_mino *mino, int x, int y);
 int					placer(t_map *mappie, t_mino *mino, int x, int y);
 int					map_check(t_map *mappie, t_mino *mino);
 t_map				*map_new(int size);
+void				printn2d(char **s, size_t num);
 
 #endif

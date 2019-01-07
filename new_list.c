@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   new_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/30 14:18:36 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 17:23:38 by jgabelho         ###   ########.fr       */
+/*   Updated: 2019/01/06 18:53:53 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_map	*map_new(int size)
 	t_map	*ret;
 
 	ret = ft_memalloc(sizeof(t_map));
-	ret->map = ft_memalloc(sizeof(char) * 16 + 1);
+	ret->map = (char**)malloc(sizeof(char*) * 16);
 	ret->size = size;
 	i = -1;
 	while (++i < 16)
