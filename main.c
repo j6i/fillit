@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jgabelho <jgabelho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/28 12:02:40 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 21:24:26 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/08 13:39:45 by jgabelho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 void	usage(void)
 {
 	ft_putstr("usage: fillit input_file\n");
-	exit (-1);
+	exit(-1);
 }
 
 int		error(void)
 {
 	ft_putstr("error\n");
-	exit (-1);
+	exit(-1);
 }
 
 int		main(int argc, char **argv)
