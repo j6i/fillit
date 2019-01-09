@@ -6,7 +6,7 @@
 /*   By: mschroed <mschroed@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/31 19:03:31 by mschroed          #+#    #+#             */
-/*   Updated: 2019/01/06 19:18:57 by mschroed         ###   ########.fr       */
+/*   Updated: 2019/01/08 17:20:31 by mschroed         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int		val_mino(t_mino *head)
 	vald = head;
 	while (vald != NULL)
 	{
+		if (id >= 26)
+			return (-1);
 		if (hash_per(vald->crd) == 0)
 			return (-1);
 		if (hash_num(vald->crd) == 0)
